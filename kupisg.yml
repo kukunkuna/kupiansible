@@ -1,11 +1,10 @@
-tasks:
+- hosts: localhost
+  tasks:
     - name: Create a security group
       ec2_group:
-        name: "{{ sgkupi }}"
+        name: sg_kupi
         description: The webservers security group
-        region: "{{ region }}"
-        #aws_access_key: "{{ aws_access_key }}"
-        #aws_secret_key: "{{ aws_secret_key }}"
+        region: us-east-2
         rules:
           - proto: tcp
             from_port: 22
@@ -18,6 +17,10 @@ tasks:
           - proto: tcp
             from_port: 443
             to_port: 443
+            cidr_ip: 0.0.0.0/0
+          - proto: tcp
+            from_port: 8080
+            to_port: 8080
             cidr_ip: 0.0.0.0/0
         rules_egress:
           - proto: all
