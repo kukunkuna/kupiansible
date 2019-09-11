@@ -25,3 +25,13 @@
         rules_egress:
           - proto: all
             cidr_ip: 0.0.0.0/0
+
+    - name: Launch the new EC2 Instance
+      local_action: ec2
+          group= sg_kupi
+          instance_type= t2.micro
+          image= ami-0520e698dd500b1d1 (64-bit x86) / ami-0099847d600887c9f (64-bit Arm)
+          wait=true
+          region= us-east-2
+          count={{count}}
+      register: ec2
