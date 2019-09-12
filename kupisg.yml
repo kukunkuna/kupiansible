@@ -2,7 +2,7 @@
   tasks:
     - name: Create a security group
       ec2_group:
-        name: sg_kupi
+        name: sg_kupi01
         description: The webservers security group
         region: us-east-2
         rules:
@@ -25,14 +25,20 @@
         rules_egress:
           - proto: all
             cidr_ip: 0.0.0.0/0
-
-    - name: Launch the new EC2 Instance
-      ec2:  
-        group : sg_kupi
-        instance_type: t2.micro
-        image: ami-0520e698dd500b1d1 (64-bit x86) / ami-0099847d600887c9f (64-bit Arm)
-        wait: true
-        region: us-east-2
-        vpc_subnet_id: vpc-05a937beb4198417d
-        count: 1
-      register: ec2
+- hosts: localhost
+  tasks:
+      - name: Launch the new EC2 Instance
+        ec2:  
+          instance_type: t2.micro
+          key_name: GubiMasterKey
+          image: ami-0520e698dd500b1d1 (64-bit x86) / ami-0099847d600887c9f (64-bit Arm)
+          region: us-east-2
+          group: sg_kupi01
+          count: 3
+          wait: yes
+          wait_timeout: 500
+          assign_public_ip: yes
+          instance_tags:
+             name: kupiserver
+          monitoring: no
+          vpc_subnet_id: subnet-08a0a04fb35f0bd0d
