@@ -25,20 +25,5 @@
         rules_egress:
           - proto: all
             cidr_ip: 0.0.0.0/0
-- hosts: localhost
-  tasks:
-      - name: Launch the new EC2 Instance
-        ec2:  
-          instance_type: t2.micro
-          key_name: GubiMasterKey
-          image: ami-0520e698dd500b1d1 (64-bit x86) / ami-0099847d600887c9f (64-bit Arm)
-          region: us-east-2
-          group: sg_kupi01
-          count: 3
-          wait: yes
-          wait_timeout: 500
-          assign_public_ip: yes
-          instance_tags:
-             name: kupiserver
-          monitoring: no
-          vpc_subnet_id: subnet-08a0a04fb35f0bd0d
+        tags:
+          Name: sg_kupi01
