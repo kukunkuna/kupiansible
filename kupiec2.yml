@@ -15,3 +15,5 @@
              name: kupiserver
           monitoring: no
           vpc_subnet_id: subnet-08a0a04fb35f0bd0d
+          yum: name=apache2 state=present
+          service: name=apache2 state=running enabled=yes
