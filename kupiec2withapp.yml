@@ -17,11 +17,9 @@
              name: kupiserver
           monitoring: no
           vpc_subnet_id: subnet-08a0a04fb35f0bd0d
-      - name: install httpd
-        yum:
-          name: httpd
-          state: latest
-      - name: start httpd
-        service:
-          name: httpd
-          state: started
+    #  - name: install httpd
+    #      name: httpd
+    #      state: latest
+    ##    service:
+      #    name: httpd
+      #    state: started
