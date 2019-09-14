@@ -12,7 +12,7 @@
       ec2:
         instance_ids: '{{ instance_ids }}'
         region: '{{ region }}'
-        state: stopped
+        state: absent
         wait: True
         vpc_subnet_id: subnet-08a0a04fb35f0bd0d
         assign_public_ip: yes
