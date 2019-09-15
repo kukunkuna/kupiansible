@@ -15,4 +15,16 @@
              name: kupiserver
           monitoring: no
           vpc_subnet_id: subnet-08a0a04fb35f0bd0d
-          user_data_path: /home/ec2-user/user_data
+
+- hosts: ec2_instance_ips
+  remote_user: root
+  become: True
+  tasks:
+    - name: Install nginx
+      yum:
+        name: nginx
+        state: present
+    - name: Restart nginx
+      service:
+        name: nginx
+        state: restarted
