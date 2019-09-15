@@ -16,4 +16,3 @@
         wait: True
         vpc_subnet_id: subnet-08a0a04fb35f0bd0d
         assign_public_ip: yes
-        user_data_path: /home/ec2-user/user_data
