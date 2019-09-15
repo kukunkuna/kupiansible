@@ -2,7 +2,7 @@
   tasks:
     - name: Create a elb
       ec2_elb_lb:
-      start: present
+      state: present
       region: us-east-2
       cross_az_load_balancing: yes
       listeners:
