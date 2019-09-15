@@ -1,6 +1,6 @@
 - hosts: localhost
   tasks:
-    - name: Create a elb
+  - name: Create a elb
       ec2_elb_lb:
       state: present
       region: us-east-2
