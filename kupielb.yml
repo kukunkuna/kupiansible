@@ -1,0 +1,23 @@
+- hosts: localhost
+  tasks:
+    - name: Create a elb
+      ec2_elb_lb:
+      start: present
+      region: us-east-2
+      cross_az_load_balancing: yes
+      listeners:
+        - prototocal:  http
+          load_balance_port: 80
+          instance_port: 80
+      tags:
+          name: kupi_elb
+      security_grou_ids:
+      zones: us-east-2
+      health_check:
+          ping_protocal: http
+          ping_port: 80
+          ping_path: "/index.html"
+          response_timeout: 5
+          interval: 30
+          unhealthy_threshold: 2
+          healthy_threshold: 2
