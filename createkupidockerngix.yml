@@ -1,0 +1,5 @@
+- hosts: all 
+  become: true
+  tasks:
+    - name: creating a docker nginx image
+      shell: docker run -d --name nginx -p  8090:8080 nginx

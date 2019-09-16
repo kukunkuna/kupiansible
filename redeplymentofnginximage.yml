@@ -1,0 +1,14 @@
+- hosts: localhost
+  become: true
+  tasks:
+    - name: stop the container
+      shell: docker stop xxxx
+
+    - name: remove contener
+    - shell: docker rm -f  xxxxx
+
+    - name: remove Images
+      shell: docker rmi -f xxxx
+
+    - name: creating a docker nginx image
+      shell: docker run -d --name nginx -p  8090:8080 nginx
