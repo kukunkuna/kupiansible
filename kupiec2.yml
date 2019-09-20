@@ -15,7 +15,6 @@
              name: kupiserver
           monitoring: no
           vpc_subnet_id: subnet-08a0a04fb35f0bd0d
-
 - hosts: ec2_instance_ips
   remote_user: root
   become: True
