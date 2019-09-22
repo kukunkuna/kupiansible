@@ -1,8 +1,10 @@
 - hosts: localhost
+  become: true
+  become_user:  ec2-user
   tasks:
     - name: Create a security group
       ec2_group:
-        name: sgkupi
+        name: sgkupiec2
         description: The webservers security group
         region: us-east-2
         vpc_id: vpc-05a937beb4198417d
